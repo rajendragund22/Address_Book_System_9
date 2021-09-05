@@ -3,8 +3,17 @@ import java.util.Scanner;
 public class AddressBook {
     public static void main(String[] args) {
         System.out.println("Welcome to the Address Book System code !!!");
-        newAddressBook person = new newAddressBook();
-        person.addContact();
+        Scanner sc = new Scanner(System.in);
+        AddressBookDe person = new AddressBookDe();
+        person.addContact();//Calling Add Contacts Method
+        System.out.println("Enter Y To Edit The Contact");
+        String op = sc.nextLine();
+
+        if (op.equals("y") || op.equals("Y")) {
+
+            System.out.println("You have Entered following data");
+            System.out.println("The Contact Details After Editing : " + person);
+        }
     }
 }
 
@@ -89,13 +98,11 @@ class contactDetails {
 
     }
 }
- class newAddressBook {
+ class AddressBookDe {
 
     Scanner sc = new Scanner(System.in);
-
-
+    contactDetails person = new contactDetails();
     public void addContact() {
-        contactDetails person = new contactDetails();
         System.out.println("Enter First Name: ");
         String firstName = sc.nextLine();
         System.out.println("Enter last Name: ");
@@ -119,6 +126,16 @@ class contactDetails {
         person.setZip(zip.intValue());
         person.setPhoneNumber(phoneNumber.intValue());
         person.setEmail(email);
-        System.out.println("The Contact Details of "+firstName+ "\n"+ person);
+        System.out.println("The Contact Details of " + firstName + "\n" + person);
+    }
+
+    public void editContact() {
+        System.out.println("Enter the firstName of person");
+        String editName = sc.nextLine();
+        if (editName.equalsIgnoreCase(person.getFirstName()))
+            addContact();
+        else
+            System.out.println("The Entered First Name Is Not Match");
+        editContact();
     }
 }
