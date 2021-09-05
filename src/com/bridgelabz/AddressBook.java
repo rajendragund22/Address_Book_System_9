@@ -1,17 +1,10 @@
 package com.bridgelabz;
-
+import java.util.Scanner;
 public class AddressBook {
     public static void main(String[] args) {
         System.out.println("Welcome to the Address Book System code !!!");
-        contactDetails newContact = new contactDetails();
-        newContact.setFirstName("Rajendra \n");
-        newContact.setLastName("Gund \n");
-        newContact.setAddressCity("Ahmednagar \n");
-        newContact.setState("Maharashtra \n");
-        newContact.setZip(414501) ;
-        newContact.setEmail("rajendragund2015@gmail.com \n");
-        newContact.setPhoneNumber( 9604315270l);
-        System.out.println("The Contact is : \n" +newContact);
+        newAddressBook person = new newAddressBook();
+        person.addContact();
     }
 }
 
@@ -94,5 +87,38 @@ class contactDetails {
                         " PhoneNumber : " + phoneNumber +'\'' +
                         " Email : " + email;
 
+    }
+}
+ class newAddressBook {
+
+    Scanner sc = new Scanner(System.in);
+
+
+    public void addContact() {
+        contactDetails person = new contactDetails();
+        System.out.println("Enter First Name: ");
+        String firstName = sc.nextLine();
+        System.out.println("Enter last Name: ");
+        String lastName = sc.nextLine();
+        System.out.println("Enter your addressCity: ");
+        String addressCity = sc.nextLine();
+        System.out.println("Enter your state: ");
+        String state = sc.nextLine();
+        System.out.println("Enter zip code : ");
+        Long zip = sc.nextLong();
+        sc.nextLine();
+        System.out.println("Enter phone number: ");
+        Long phoneNumber = sc.nextLong();
+        sc.nextLine();
+        System.out.println("Enter your EMail ID: ");
+        String email = sc.nextLine();
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setAddressCity(addressCity);
+        person.setState(state);
+        person.setZip(zip.intValue());
+        person.setPhoneNumber(phoneNumber.intValue());
+        person.setEmail(email);
+        System.out.println("The Contact Details of "+firstName+ "\n"+ person);
     }
 }
